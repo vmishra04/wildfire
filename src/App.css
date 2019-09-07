@@ -1,33 +1,190 @@
-.App {
-  text-align: center;
+@font-face {
+  font-family: 'Apercu';
+  src: url('fonts/Apercu/Apercu-Mono.woff') format('woff');
+  font-weight: 800;
+  font-style: normal;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+@font-face {
+  font-family: 'CircularStd';
+  src: url('fonts/Circular/CircularStd-Black.eot');
+  src: url('fonts/Circular/CircularStd-Black.eot?#iefix') format('embedded-opentype'), url('fonts/Circular/CircularStd-Black.woff') format('woff'), url('fonts/Circular/CircularStd-Black.ttf') format('truetype'), url('fonts/Circular/CircularStd-Black.svg#bcc26993292869431e54c666aafa8fcd') format('svg');
+  font-weight: 800;
+  font-style: normal;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+@font-face {
+  font-family: 'CircularStd';
+  src: url('fonts/Circular/CircularStd-BlackItalic.eot');
+  src: url('fonts/Circular/CircularStd-BlackItalic.eot?#iefix') format('embedded-opentype'), url('fonts/Circular/CircularStd-BlackItalic.woff') format('woff'), url('fonts/Circular/CircularStd-BlackItalic.ttf') format('truetype'), url('fonts/Circular/CircularStd-BlackItalic.svg#bcc26993292869431e54c666aafa8fcd') format('svg');
+  font-weight: 800;
+  font-style: italic;
 }
 
-.App-link {
-  color: #61dafb;
+@font-face {
+  font-family: 'CircularStd';
+  src: url('fonts/Circular/CircularStd-Bold.eot');
+  src: url('fonts/Circular/CircularStd-Bold.eot?#iefix') format('embedded-opentype'), url('fonts/Circular/CircularStd-Bold.woff') format('woff'), url('fonts/Circular/CircularStd-Bold.ttf') format('truetype'), url('fonts/Circular/CircularStd-Bold.svg#bcc26993292869431e54c666aafa8fcd') format('svg');
+  font-weight: 600;
+  font-style: normal;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@font-face {
+  font-family: 'CircularStd';
+  src: url('fonts/Circular/CircularStd-BoldItalic.eot');
+  src: url('fonts/Circular/CircularStd-BoldItalic.eot?#iefix') format('embedded-opentype'), url('fonts/Circular/CircularStd-BoldItalic.woff') format('woff'), url('fonts/Circular/CircularStd-BoldItalic.ttf') format('truetype'), url('fonts/Circular/CircularStd-BoldItalic.svg#bcc26993292869431e54c666aafa8fcd') format('svg');
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'CircularStd';
+  src: url('fonts/Circular/CircularStd-Medium.eot');
+  src: url('fonts/Circular/CircularStd-Medium.eot?#iefix') format('embedded-opentype'), url('fonts/Circular/CircularStd-Medium.woff') format('woff'), url('fonts/Circular/CircularStd-Medium.ttf') format('truetype'), url('fonts/Circular/CircularStd-Medium.svg#bcc26993292869431e54c666aafa8fcd') format('svg');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CircularStd';
+  src: url('fonts/Circular/CircularStd-MediumItalic.eot');
+  src: url('fonts/Circular/CircularStd-MediumItalic.eot?#iefix') format('embedded-opentype'), url('fonts/Circular/CircularStd-MediumItalic.woff') format('woff'), url('fonts/Circular/CircularStd-MediumItalic.ttf') format('truetype'), url('fonts/Circular/CircularStd-MediumItalic.svg#bcc26993292869431e54c666aafa8fcd') format('svg');
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'CircularStd';
+  src: url('fonts/Circular/CircularStd-Book.eot');
+  src: url('fonts/Circular/CircularStd-Book.eot?#iefix') format('embedded-opentype'), url('fonts/Circular/CircularStd-Book.woff') format('woff'), url('fonts/Circular/CircularStd-Book.ttf') format('truetype'), url('fonts/Circular/CircularStd-Book.svg#bcc26993292869431e54c666aafa8fcd') format('svg');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CircularStd';
+  src: url('fonts/Circular/CircularStd-BookItalic.eot');
+  src: url('fonts/Circular/CircularStd-BookItalic.eot?#iefix') format('embedded-opentype'), url('fonts/Circular/CircularStd-BookItalic.woff') format('woff'), url('fonts/Circular/CircularStd-BookItalic.ttf') format('truetype'), url('fonts/Circular/CircularStd-BookItalic.svg#bcc26993292869431e54c666aafa8fcd') format('svg');
+  font-weight: 400;
+  font-style: italic;
+}
+
+html::-webkit-scrollbar{ background-color: whitesmoke; width: 4px; height: 0;}
+html::-webkit-scrollbar-thumb{ background-color: #bdbdbd; }
+
+
+.home {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: center;
+	height: 100vh;
+}
+
+.transactions {
+	margin: 1rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 30rem;
+}
+
+.header {
+	margin: 1rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 15rem;
+}
+
+h1 {
+	font-family: 'CircularStd';
+	font-weight: 800;
+	line-height: 1;
+}
+
+button, a {
+	cursor: pointer;
+	box-shadow: none;
+	background: transparent;
+	font-family: 'Apercu';
+	margin-right: 0.5rem;
+	border-style: solid;
+	border-width: 2px;
+	border-color: #000;
+	outline: none;
+	font-size: 0.9rem;
+	height: 2.5rem;
+	width: 6rem;
+}
+
+button:hover, a:hover {
+	background: black;
+	color: #FFF;
+}
+
+a {
+	text-decoration: none;
+	color: #000;
+	padding: 0.75rem;
+}
+
+table {
+	width: 100%;
+}
+
+.table.is-striped tbody tr:not(.is-selected):nth-child(even) {
+	background-color: #FAFAFA;
+}
+
+.table thead, th {
+	font-family: 'Apercu';
+	padding: 0.5em 0.75em;
+	background-color: #000;
+	color: #FFF;
+}
+
+.table td, tr, tbody {
+	font-family: 'Apercu';
+	padding: 0.5em 0.75em;
+	vertical-align: top;
+	text-align: left;
+}
+
+svg.feather {
+    vertical-align: sub;
+}
+
+svg.feather.feather-external-link {
+    vertical-align: top;
+}
+
+.helper {
+	align-self: flex-end;
+	font-size: 0.75rem;
+}
+
+.optin {
+	display: flex;
+	flex-direction: row;
+}
+
+.coverage {
+	margin: 3rem;
+	width: 25rem;
+}
+
+.registration {
+	margin: 3rem;
+	width: 25rem;
+}
+
+.icon {
+	border: none;
+	padding: 0;
+}
+
+.icon:hover {
+	background: #FFF;
+	color: #000;
 }
