@@ -74,81 +74,81 @@ html::-webkit-scrollbar-thumb{ background-color: #bdbdbd; }
 
 
 .home {
-	display: flex;
-	flex-wrap: wrap;
-	flex-direction: row;
-	justify-content: center;
-	height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  height: 100vh;
 }
 
 .transactions {
-	margin: 1rem;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	width: 30rem;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 30rem;
 }
 
 .header {
-	margin: 1rem;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	width: 15rem;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 15rem;
 }
 
 h1 {
-	font-family: 'CircularStd';
-	font-weight: 800;
-	line-height: 1;
+  font-family: 'CircularStd';
+  font-weight: 800;
+  line-height: 1;
 }
 
 button, a {
-	cursor: pointer;
-	box-shadow: none;
-	background: transparent;
-	font-family: 'Apercu';
-	margin-right: 0.5rem;
-	border-style: solid;
-	border-width: 2px;
-	border-color: #000;
-	outline: none;
-	font-size: 0.9rem;
-	height: 2.5rem;
-	width: 6rem;
+  cursor: pointer;
+  box-shadow: none;
+  background: transparent;
+  font-family: 'Apercu';
+  margin-right: 0.5rem;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #000;
+  outline: none;
+  font-size: 0.9rem;
+  height: 2.5rem;
+  width: 6rem;
 }
 
 button:hover, a:hover {
-	background: black;
-	color: #FFF;
+  background: black;
+  color: #FFF;
 }
 
 a {
-	text-decoration: none;
-	color: #000;
-	padding: 0.75rem;
+  text-decoration: none;
+  color: #000;
+  padding: 0.75rem;
 }
 
 table {
-	width: 100%;
+  width: 100%;
 }
 
 .table.is-striped tbody tr:not(.is-selected):nth-child(even) {
-	background-color: #FAFAFA;
+  background-color: #FAFAFA;
 }
 
 .table thead, th {
-	font-family: 'Apercu';
-	padding: 0.5em 0.75em;
-	background-color: #000;
-	color: #FFF;
+  font-family: 'Apercu';
+  padding: 0.5em 0.75em;
+  background-color: #000;
+  color: #FFF;
 }
 
 .table td, tr, tbody {
-	font-family: 'Apercu';
-	padding: 0.5em 0.75em;
-	vertical-align: top;
-	text-align: left;
+  font-family: 'Apercu';
+  padding: 0.5em 0.75em;
+  vertical-align: top;
+  text-align: left;
 }
 
 svg.feather {
@@ -160,31 +160,239 @@ svg.feather.feather-external-link {
 }
 
 .helper {
-	align-self: flex-end;
-	font-size: 0.75rem;
+  align-self: flex-end;
+  font-size: 0.75rem;
 }
 
 .optin {
-	display: flex;
-	flex-direction: row;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .coverage {
-	margin: 3rem;
-	width: 25rem;
+  display: flex;
+  flex-direction: column;
+  margin: 3rem;
 }
 
 .registration {
-	margin: 3rem;
-	width: 25rem;
+  margin: 3rem;
 }
 
 .icon {
-	border: none;
-	padding: 0;
+  border: none;
+  padding: 0;
 }
 
 .icon:hover {
-	background: #FFF;
-	color: #000;
+  background: #FFF;
+  color: #000;
+}
+
+input {
+  font-family: 'Apercu';
+  font-size: 1rem;
+  height: 2.25rem;
+  outline: none;
+  min-width: 20rem;
+  border-style: solid;
+  border-width: 2px;
+  margin-right: 1rem;
+}
+
+input[type=text], input[type=email] {
+  padding-left: 0.75rem;
+}
+
+.input-rows {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1rem;
+}
+
+.input-address {
+  width: 42rem;
+}
+
+.evaluate-address {
+  max-width: 23rem;
+}
+
+.actual-coverage {
+  display: flex;
+  flex-direction: column;
+  width: 15rem;
+  align-self: center;
+}
+
+.coverage-numbers {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.is-apercu {
+  font-family: 'Apercu' !important;
+}
+
+.is-big {
+  font-family: 'CircularStd';
+  font-weight: bolder;
+  font-size: 2rem;
+}
+
+.is-medium {
+  font-family: 'CircularStd';
+  font-weight: bolder;
+  font-size: 1.5rem;
+}
+
+.slider {
+  cursor: pointer;
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: calc(100%); /* Full-width */
+  height: 5px; /* Specified height */
+  background: transparent; /* Grey background */
+  outline: none; /* Remove outline */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  opacity: 1;
+  transition: opacity .2s;
+  margin: 0px;
+  margin-top: 3rem;
+  border: none;
+  z-index: 999;
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */ 
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 15px; /* Set a specific slider handle width */
+  height: 15px; /* Slider handle height */
+  background: lightgrey; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+  border-radius: 50%;
+
+}
+
+.slider::-moz-range-thumb {
+  width: 5px; /* Set a specific slider handle width */
+  height: 5px; /* Slider handle height */
+  background: lightgrey; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+progress[value] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: calc(100%);
+  height: 5px;
+  margin-top: -0.25rem;
+}
+
+progress[value]::-webkit-progress-bar {
+  background-color: #F2F2F2;
+}
+
+progress[value]::-webkit-progress-value {
+  background-color: #5acf9c;
+}
+
+.is-green {
+  color: #5acf9c;
+}
+
+.map {
+  margin-top: 2rem;
+  width: 25rem;
+}
+
+.map a, .evaluate a {
+  background: none !important;
+  border: none;
+}
+
+.map a:hover, .evaluate a {
+  background: none;
+}
+
+input[type="submit"] {
+  cursor: pointer;
+  border-color: #5acf9c;
+  background: #5acf9c;
+  color: #FFF;
+  margin-top: 1rem;
+  float: right;
+  min-width: 5rem !important;
+  height: 3rem;
+}
+
+.mapboxgl-ctrl-bottom-right {
+  display: none;
+}
+
+.evaluate {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.evaluate-left {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3rem;
+  margin-left: 5rem;
+  max-width: 24rem;
+  -webkit-flex: 1 1 auto;
+  overflow-y: auto;
+}
+
+.evaluate-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+}
+
+.evaluation {
+  align-self: center;
+  height: 20rem;
+}
+
+p.address {
+  font-family: 'Apercu';
+  font-size: 1.5rem;
+  width: 17.5rem;
+  margin: 0;
+  margin-bottom: 1rem;
+  margin-top: -0.25rem;
+}
+
+.address-parent {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+
+.address-parent .feather {
+  cursor: pointer;
+}
+
+p.suggestion {
+  cursor: pointer;
+  font-family: 'Apercu';
+  margin: 0;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  padding: 0.25rem;
+  padding-left: 1rem;
+  margin-left: -0.5rem;
+}
+
+p.suggestion:hover {
+  background: #ebebeb;
 }
