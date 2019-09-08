@@ -66,7 +66,8 @@ class Home extends Component {
         </div>
 
         <div class="header">
-          <h1>Instant Insurance against Wildfires <span role="img" aria-label="fire">🔥</span></h1>
+          <img class="logo" src="/logo512.png" alt="logo"></img>
+          <h1>Instant Insurance against Wildfires</h1>
           <div class="buttons">
             <Link to='/evaluate'>Evaluate</Link>
             <Link to='/optin'>Opt-In</Link>

@@ -99,6 +99,13 @@ class Home extends Component {
   mapClick(map, event) {
     if(this.state.locked===true) return;
     var features = map.queryRenderedFeatures(event.point);
+    api.search(`${this.state.center[0]},${this.state.center[1]}`).then(response => {
+        this.setState({
+          place: response.data.features[0],
+          center: this.state.center,
+          placeName: response.data.features[0].place_name,
+        })
+      });
     this.setState({
       locked: true,
       center: features[0].geometry.coordinates[0][0],
@@ -111,7 +118,7 @@ class Home extends Component {
         'data': features[0],
       },
       'type': 'fill-extrusion',
-      'minzoom': 15,
+      'minzoom': 18,
       'paint': {
       'fill-extrusion-color': '#5acf9c',
       'fill-extrusion-height': [
@@ -147,7 +154,7 @@ class Home extends Component {
           <input type="text" class="evaluate-address" placeholder="Neighborhood, Postcode, Address?" style={{minWidth: '23rem'}} onChange={this.handleInput} ref={(inputPlaces) => {this.inputPlaces = inputPlaces}}/>
           {this.state.suggestions.map((object, index) => {
             return(
-              <p class="suggestion" onClick={this.handleSelection.bind(null, object)}>{object.place_name}</p>
+              <p key={index} class="suggestion" onClick={this.handleSelection.bind(null, object)}>{object.place_name}</p>
             );
           })}
           <h1>Recommended Coverage</h1>
@@ -155,7 +162,7 @@ class Home extends Component {
             <p class="address">
               {this.state.placeName}
             </p>
-            <FeatherIcon icon="x-circle" onClick={this.reset}/>
+            <FeatherIcon icon="x-circle" onClick={this.reset} style={{display: this.state.locked ? 'inherit' : 'none'}}/>
           </div>
           <div class="evaluation is-apercu" style={{height: this.state.place ? '2rem' : '2rem'}}>
             Evaluate here
