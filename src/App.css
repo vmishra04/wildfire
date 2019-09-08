@@ -200,6 +200,7 @@ input {
   border-style: solid;
   border-width: 2px;
   margin-right: 1rem;
+  border-color: #bdbdbd;
 }
 
 input[type=text], input[type=email] {
@@ -298,11 +299,11 @@ progress[value]::-webkit-progress-bar {
 }
 
 progress[value]::-webkit-progress-value {
-  background-color: #5acf9c;
+  background-color: #1E9280;
 }
 
 .is-green {
-  color: #5acf9c;
+  color: #1E9280;
 }
 
 .map {
@@ -321,8 +322,8 @@ progress[value]::-webkit-progress-value {
 
 input[type="submit"] {
   cursor: pointer;
-  border-color: #5acf9c;
-  background: #5acf9c;
+  border-color: #1E9280;
+  background: #1E9280;
   color: #FFF;
   margin-top: 1rem;
   float: right;
@@ -391,6 +392,7 @@ p.suggestion {
   padding: 0.25rem;
   padding-left: 1rem;
   margin-left: -0.5rem;
+  width: 23.3rem;
 }
 
 p.suggestion:hover {
@@ -406,6 +408,29 @@ p.suggestion:hover {
 }
 
 svg.feather.feather-x-circle {
+  cursor: pointer;
   fill: #E9203E;
   stroke: #FFF;
+}
+
+.optin .map {
+  margin-top: 0;
+}
+
+.optin-suggestion {
+  width: 42.85rem !important;
+}
+
+.tag {
+  margin-left: 1rem;
+  background: black;
+  color: #FFF;
+  padding: 0.5rem;
+}
+
+.above-optin-search {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 1rem;
 }

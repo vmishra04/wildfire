@@ -4,6 +4,7 @@ import './../App.css';
 import FeatherIcon from 'feather-icons-react';
 import {Link} from "react-router-dom";
 import ReactMapboxGl from "react-mapbox-gl";
+import counterUp from 'counterup2';
 import api from "./api.js";
 
 const Map = ReactMapboxGl({
@@ -15,7 +16,6 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.inputPlaces = React.createRef();
-    this.mapRef = React.createRef();
     this.handleInput = this.handleInput.bind(this);
     this.handleSelection = this.handleSelection.bind(this);
     this.loadedMap = this.loadedMap.bind(this);
@@ -31,7 +31,16 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    
+    const el1 = document.querySelector('.counter1')
+    const el2 = document.querySelector('.counter2')
+    counterUp(el1, {
+      duration: 1000,
+      delay: 16,
+    })
+    counterUp(el2, {
+      duration: 1000,
+      delay: 16,
+    })
   }
 
   handleInput() {
@@ -99,16 +108,20 @@ class Home extends Component {
   mapClick(map, event) {
     if(this.state.locked===true) return;
     var features = map.queryRenderedFeatures(event.point);
+    try {
+      // eslint-disable-next-line
+      const check = features[0].layer;
+    } catch(e) {
+      return;
+    }
+    if(features[0].layer.id!=='3d-buildings') return;
     api.search(`${this.state.center[0]},${this.state.center[1]}`).then(response => {
-        this.setState({
-          place: response.data.features[0],
-          center: this.state.center,
-          placeName: response.data.features[0].place_name,
-        })
-      });
-    this.setState({
-      locked: true,
-      center: features[0].geometry.coordinates[0][0],
+      this.setState({
+        place: response.data.features[0],
+        center: features[0].geometry.coordinates[0][0],
+        locked: true,
+        placeName: response.data.features[0].place_name,
+      })
     });
     map.removeLayer('3d-buildings');
     map.addLayer({
@@ -170,7 +183,7 @@ class Home extends Component {
           <div class="actual-coverage">
             <span class="is-big" style={{marginBottom: '-0.25rem'}}>Payout</span>
             <div class="coverage-numbers">
-              <span class="is-apercu is-big is-green">$4,128</span><span class="is-apercu is-medium">$192.4</span>
+              <span class="is-apercu is-big is-green counter1">$4128</span><span class="is-apercu is-medium counter2">$192.4</span>
             </div>
             <span class="is-medium" style={{alignSelf: 'flex-end', marginTop: '-1rem'}}>Premium</span>
           </div>
@@ -185,7 +198,6 @@ class Home extends Component {
             antialias={true}
             onStyleLoad={this.loadedMap}
             onClick={this.mapClick}
-            ref={ref => this.mapRef = ref}
             containerStyle={{
               height: "100vh",
               width: "65vw"
