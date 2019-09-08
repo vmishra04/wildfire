@@ -171,6 +171,11 @@ svg.feather.feather-external-link {
   flex-wrap: wrap;
 }
 
+.optin-parent {
+  display: flex;
+  flex-direction: column;
+}
+
 .coverage {
   display: flex;
   flex-direction: column;
@@ -414,7 +419,7 @@ svg.feather.feather-x-circle {
 }
 
 .optin .map {
-  margin-top: 0;
+  margin-top: 1.25rem;
 }
 
 .optin-suggestion {
@@ -433,4 +438,102 @@ svg.feather.feather-x-circle {
   flex-direction: row;
   align-items: center;
   margin-bottom: 1rem;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: column;
+  height: 3rem;
+  align-items: center;
+}
+
+input.age {
+  min-width: 2.5rem !important;
+  width: 1rem !important;
+}
+
+input.ssn {
+  min-width: 3rem;
+  width: 15.44rem;
+}
+
+.signed {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.signed-left {
+  padding-top: 3rem;
+  padding-left: 5rem;
+  display: flex;
+  flex-direction: column;
+  background: #21b868;
+  width: 50vw;
+  height: 83vh;
+  margin: 5vh;
+}
+
+.signed-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5rem;
+}
+
+.cert-heading {
+  line-height: 0.9;
+  color: #FFF;
+  width: 20rem;
+  font-size: 3rem;
+}
+
+.cert-questions {
+  color: #ADEAC7;
+  font-size: 1.5rem;
+}
+
+.titles {
+  margin-right: 2rem;
+}
+
+.cert-content {
+  display: flex;
+  flex-direction: row;
+}
+
+.cert-answers {
+  color: #FFF;
+  font-size: 1.5rem;
+}
+
+.card {
+  background: #ebebeb;
+  min-height: 20rem;
+  min-width: 33rem;
+  border-radius: 10px;
+}
+
+.special-back {
+  stroke: white;
+}
+
+.signed a {
+  border: none;
+  margin-left: -1rem;
+}
+
+.signed a:hover {
+  background: none;
+}
+
+h1.policy {
+  width: 18rem !important;
+  word-wrap: break-word;
+}
+
+.mapboxgl-map button {
+  margin-right: 0 !important;
+  box-shadow: none !important;
 }

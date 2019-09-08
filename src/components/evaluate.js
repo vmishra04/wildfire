@@ -6,6 +6,7 @@ import {Link} from "react-router-dom";
 import ReactMapboxGl from "react-mapbox-gl";
 import counterUp from 'counterup2';
 import api from "./api.js";
+import {ZoomControl} from "react-mapbox-gl";
 
 const Map = ReactMapboxGl({
   accessToken: "pk.eyJ1IjoianJteSIsImEiOiJjazA5MXQwdngwNDZhM2lxOHFheTlieHM3In0.1Jh_NjL_Nu3YYeMUOZvmrA"
@@ -202,6 +203,7 @@ class Home extends Component {
               height: "100vh",
               width: "65vw"
             }}>
+            <ZoomControl />
           </Map>
         </div>
       </div>

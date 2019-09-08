@@ -7,6 +7,7 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Home from './components/home.js';
 import OptIn from './components/optin.js';
 import Evaluate from './components/evaluate.js';
+import Signed from './components/signed.js';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
                 <Route exact path="/" component={Home} />
                 <Route exact path="/optin" component={OptIn} />
                 <Route exact path="/evaluate" component={Evaluate} />
+                <Route exact path="/signed" component={Signed} />
               </Switch>
             </CSSTransition>
           </TransitionGroup>
