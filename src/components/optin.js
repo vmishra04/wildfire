@@ -10,6 +10,8 @@ import Navbar from "./navbar.js";
 import cryptoRandomString from 'crypto-random-string';
 import {ZoomControl} from "react-mapbox-gl";
 
+var hash = require('object-hash');
+
 const Map = ReactMapboxGl({
   accessToken: "pk.eyJ1IjoianJteSIsImEiOiJjazA5MXQwdngwNDZhM2lxOHFheTlieHM3In0.1Jh_NjL_Nu3YYeMUOZvmrA"
 });
@@ -141,7 +143,7 @@ class Home extends Component {
         center: features[0].geometry.coordinates[0][0],
         locked: true,
         placeName: response.data.features[0].place_name,
-        houseCrypto: cryptoRandomString({length: 10}),
+        houseCrypto: hash(response.data.features[0]),
       })
     });
     this.inputPlaces.value = this.state.place.place_name;
