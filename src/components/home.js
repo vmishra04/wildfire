@@ -57,7 +57,7 @@ class Home extends Component {
             <tr>
               <td>0x4168d42F</td>
               <td>8501417</td>
-              <td>4 mins</td>
+              <td>5 days</td>
               <td><FeatherIcon icon="alert-triangle" /> $2214</td>
             </tr>
             </tbody>

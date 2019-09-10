@@ -364,8 +364,18 @@ input[type="submit"] {
 }
 
 .evaluation {
+  display: flex;
+  flex-direction: column-reverse;
   align-self: center;
-  height: 20rem;
+  height: 8rem;
+  margin-bottom: 5rem;
+}
+
+.square {
+  width: 3rem;
+  height: 3rem;
+  margin: 0.25rem;
+  text-align: center;
 }
 
 p.address {
@@ -536,4 +546,9 @@ h1.policy {
 .mapboxgl-map button {
   margin-right: 0 !important;
   box-shadow: none !important;
+}
+
+.eval-2 {
+  display: flex;
+  flex-direction: row;
 }

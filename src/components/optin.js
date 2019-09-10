@@ -190,6 +190,7 @@ class Home extends Component {
     api.sign(post_obj)
     .then(data => {
       if(data==='Dummy') {
+        api.signDB(post_obj).then(console.log());
         localStorage.setItem('user', JSON.stringify(post_obj));
         this.setState({
           redirect: true,

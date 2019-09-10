@@ -14,9 +14,27 @@ const api = {
       return response;
     });
   },
+  ai: (lat, long) => {
+    return Axios({
+      url: `http://localhost:5000/fire/${lat}/${long}`,
+      method: 'get',
+    })
+    .then(function(response) {
+      return response;
+    });
+  },
   sign: (data) => {
     return Axios({
       url: create,
+      method: "post",
+      data: data,
+    })
+    .then(res => res.data)
+    .catch(err => console.log(err))
+  },
+  signDB: (data) => {
+    return Axios({
+      url: 'http://localhost:3000/sign',
       method: "post",
       data: data,
     })

@@ -3,6 +3,7 @@ import './../App.css';
 
 import FeatherIcon from 'feather-icons-react';
 import {Link} from "react-router-dom";
+import api from "./api.js";
 
 class Signed extends Component {
 
@@ -20,7 +21,6 @@ class Signed extends Component {
     this.setState ({
       user: JSON.parse(localStorage.getItem('user')),
     })
-    console.log(this.state.user['first_name'])
   }
 
   render() {
@@ -42,9 +42,9 @@ class Signed extends Component {
             <div class="answers">
               <h1 class="cert-answers">{this.state.user['last_name']}, {this.state.user['first_name']}</h1>
               <h1 class="cert-answers policy is-apercu">{this.state.user['policy']}</h1>
-              <h1 class="cert-answers is-apercu">{this.state.user['property']}</h1>
+              <h1 class="cert-answers is-apercu">c496673</h1>
               <h1 class="cert-answers">{this.state.user['timestamp']}</h1>
-              <h1 class="cert-answers">Expiry</h1>
+              <h1 class="cert-answers">1 year</h1>
               <h1 class="cert-answers">Premium</h1>
               <h1 class="cert-answers">Payout</h1>
             </div>

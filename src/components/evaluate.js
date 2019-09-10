@@ -7,6 +7,8 @@ import ReactMapboxGl from "react-mapbox-gl";
 import counterUp from 'counterup2';
 import api from "./api.js";
 import {ZoomControl} from "react-mapbox-gl";
+import * as d3 from 'd3';
+import {select} from 'd3-selection';
 
 const Map = ReactMapboxGl({
   accessToken: "pk.eyJ1IjoianJteSIsImEiOiJjazA5MXQwdngwNDZhM2lxOHFheTlieHM3In0.1Jh_NjL_Nu3YYeMUOZvmrA"
@@ -17,9 +19,11 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.inputPlaces = React.createRef();
+    this.svg = React.createRef();
     this.handleInput = this.handleInput.bind(this);
     this.handleSelection = this.handleSelection.bind(this);
     this.loadedMap = this.loadedMap.bind(this);
+    this.getAI = this.getAI.bind(this);
     this.mapClick = this.mapClick.bind(this);
     this.reset = this.reset.bind(this);
     this.state = {
@@ -28,11 +32,12 @@ class Home extends Component {
       center: [-118.832169, 34.030823],
       placeName: null,
       locked: true,
+      aidata: [0,0,0,0,0,0],
     }
   }
 
   componentDidMount() {
-    const el1 = document.querySelector('.counter1')
+    /*const el1 = document.querySelector('.counter1')
     const el2 = document.querySelector('.counter2')
     counterUp(el1, {
       duration: 1000,
@@ -41,7 +46,7 @@ class Home extends Component {
     counterUp(el2, {
       duration: 1000,
       delay: 16,
-    })
+    })*/
   }
 
   handleInput() {
@@ -124,6 +129,7 @@ class Home extends Component {
         placeName: response.data.features[0].place_name,
       })
     });
+    this.getAI(this.state.center[0], this.state.center[1]);
     map.removeLayer('3d-buildings');
     map.addLayer({
       'id': '3d-buildings',
@@ -147,6 +153,72 @@ class Home extends Component {
         ],
         'fill-extrusion-opacity': .6
       }
+    })
+  }
+
+  createLegend(arr) {
+    const svg = this.svg;
+    const color_domain = [2000, 4000, 6000, 8000, 10000, 12000];
+    const ext_color_domain = arr;
+    const legend_labels = ['I', 'II', 'III', 'IV', 'V', 'VI'];
+    const ls_w = 20; const ls_h = 20;
+    const legend = select(svg)
+        .selectAll('legend')
+        .data(ext_color_domain)
+        .enter().append('g')
+        .attr('class', 'legend');
+    legend.append('rect')
+        .attr('y', 20)
+        .attr('x', function(d, i) {
+          return 200 - (i*ls_h) - (2*ls_h);
+        })
+        .attr('width', ls_w)
+        .attr('height', ls_h)
+        .style('fill', function(d, i) {
+          return d3.interpolateReds(d);
+        });
+    legend.append('text')
+        .attr('y', 50)
+        .attr('x', function(d, i) {
+          return 200 - (i*ls_h) - ls_h - 10;
+        })
+        .text(function(d, i) {
+          return legend_labels[i];
+        })
+        .attr('class', 'is-circular')
+        .style('fill', '#424242')
+        .style('font-size', '0.5rem')
+        .style('font-weight', '600');
+  }
+
+
+  getAI(lat, long) {
+    let arr = []
+    api.ai(long, lat).then(data => {
+      arr = data.data.data[4]
+      console.log(arr)
+      let max = arr[0]
+      for(let i = 1; i<5; i++) {
+        if(arr[i]>max) {
+          max = arr[i]
+        }
+      }
+      let min = arr[0]
+      for(let i = 1; i<6; i++) {
+        if(arr[i]<min) {
+          min = arr[i]
+        }
+      }
+      console.log(max)
+      console.log(min)
+      for(let i=0; i<arr.length; i++) {
+        let newVal = (arr[i]-min)/(max-min);
+        arr[i] = newVal;
+      }
+      arr.pop()
+      this.setState({
+        aidata: arr,
+      })
     })
   }
 
@@ -178,13 +250,26 @@ class Home extends Component {
             </p>
             <FeatherIcon icon="x-circle" onClick={this.reset} style={{display: this.state.locked ? 'inherit' : 'none'}}/>
           </div>
-          <div class="evaluation is-apercu" style={{height: this.state.place ? '2rem' : '2rem'}}>
-            Evaluate here
+          <div class="evaluation is-apercu" >
+            <div class="eval-2">
+              <div class="square" style={{background: 'rgba(244, 84, 34, '+this.state.aidata[0]+');'}}>{this.state.aidata[0].toFixed(2)}</div>
+              <div class="square" style={{background: 'rgba(244, 84, 34, '+this.state.aidata[1]+');'}}>{this.state.aidata[1].toFixed(2)}</div>
+              <div class="square" style={{background: 'rgba(244, 84, 34, '+this.state.aidata[2]+');'}}>{this.state.aidata[2].toFixed(2)}</div>
+              <div class="square" style={{background: 'rgba(244, 84, 34, '+this.state.aidata[3]+');'}}>{this.state.aidata[3].toFixed(2)}</div>
+              <div class="square" style={{background: 'rgba(244, 84, 34, '+this.state.aidata[4]+');'}}>{this.state.aidata[4].toFixed(2)}</div>
+            </div>
+            <div class="eval-2">
+              <div class="square">I</div>
+              <div class="square">II</div>
+              <div class="square">III</div>
+              <div class="square">IV</div>
+              <div class="square">V</div>
+            </div>
           </div>
           <div class="actual-coverage">
             <span class="is-big" style={{marginBottom: '-0.25rem'}}>Payout</span>
             <div class="coverage-numbers">
-              <span class="is-apercu is-big is-green counter1">$4128</span><span class="is-apercu is-medium counter2">$192.4</span>
+              <span class="is-apercu is-big is-green counter1">$9413</span><span class="is-apercu is-medium counter2">$192.4</span>
             </div>
             <span class="is-medium" style={{alignSelf: 'flex-end', marginTop: '-1rem'}}>Premium</span>
           </div>
